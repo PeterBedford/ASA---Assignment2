@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<section class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4>
+                            <i class="fas fa-sign-in-alt"></i>  Your Profile Details
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                       <p>{{ user.profile.first_name }}</p>
+                       <p>{{ user.profile.last_name }}</p>
+                       <p>{{ user.profile.address }}</p>
+                       <p>{{ user.profile.City }}</p>
+                       <p>{{ user.profile.Country }}</p>
+                       <p>{{ user.profile.Photo }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

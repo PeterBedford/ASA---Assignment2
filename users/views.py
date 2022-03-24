@@ -1,3 +1,4 @@
+from re import template
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -11,6 +12,8 @@ class UserRegisterView(generic.CreateView):
     success_url  = reverse_lazy('login')
 
 
+def profile(request):
+    return render(request, 'profile.html')
 
 
 

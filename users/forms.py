@@ -1,6 +1,8 @@
+from pyexpat import model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from users.models import Profile
 
 class Registerform(UserCreationForm):
     email = forms.EmailField()
@@ -20,3 +22,21 @@ class Registerform(UserCreationForm):
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+
+class Profileform(forms.ModelForm):
+   
+
+    class Meta: 
+        model = Profile
+        fields = ('first_name', 'last_name', 'address', 'City', 'Country', 'Photo' )
+
+    def __init__(self, *args, **kwargs):
+        super(Profileform, self).__init__(*args, **kwargs)
+
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['address'].widget.attrs['class'] = 'form-control'
+        self.fields['City'].widget.attrs['class'] = 'form-control'
+        self.fields['Country'].widget.attrs['class'] = 'form-control'
+        self.fields['Photo'].widget.attrs['class'] = 'form-control'
