@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<section class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4>
+                            <i class="fa-solid fa-circle-info"></i> Product
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                            <li>{{ product.name }}</li>
+                            <li>{{ product.brand }}</li>
+                            <li>{{ product.average_cost }}</li>
+                            <li>{{ product.category }}</li>
+                            <li>{{ product.date_released }}</li>
+                            <li>{{ product.description }}</li>
+                            <li>{{ product.photo }}</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
