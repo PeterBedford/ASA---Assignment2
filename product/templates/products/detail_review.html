@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<section class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4>
+                            <i class="fa-solid fa-circle-info"></i> Review
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                            <li>{{ review.Author }}</li>
+                            <li>{{ review.Product }}</li>
+                            <li>{{ review.rating }}</li>
+                            <li>{{ review.description }}</li>
+                            <li>{{ review.date_posted }}</li>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+{% endblock %}

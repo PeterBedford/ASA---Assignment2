@@ -12,7 +12,7 @@
     <!--Navbar-->
 <nav class="nav navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
   <div class="container-fluid">
-        <a class="navbar-brand" href="">navbar</a>
+        <a class="navbar-brand" href="">Product Reviews</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,10 +53,10 @@
               {% endif %}
               >
               <a class="nav-link" href="#">
-                Welcome {{user.first_name}} (Dashboard)</a>
+                Welcome {{user.first_name}}</a>
               </li>
               <li class="nav-item mr-3">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}">
                   <i class="fas fa-edit"></i>
                   Edit Profile</a>
               </li>

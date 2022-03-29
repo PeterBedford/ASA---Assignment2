@@ -5,11 +5,12 @@ from statistics import mode
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, DeleteView, UpdateView
-from product.forms import CreateReviewForm, UpdateReviewForm
+from product.forms import CreateReviewForm, DetailReviewForm, UpdateReviewForm
 from product.models import Product, Review
 from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from users.models import Profile
 
 class ProductView(DetailView):
     model = Product
@@ -60,6 +61,16 @@ class ReviewUpdate(UpdateView):
         return reverse_lazy('index')
 
 
+
+@method_decorator(login_required, name='dispatch')
+class ReviewDetail(DetailView):
+    model = Review
+    template_name = 'products/detail_review.html'
+
+    
+
+    def get_success_url(self):
+        return reverse_lazy('index')
 
 
 

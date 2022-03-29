@@ -20,3 +20,15 @@ class UpdateReviewForm(forms.ModelForm):
             'rating': forms.Select(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+class DetailReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ('Product', 'rating', 'description')
+        widgets = {
+            
+            'rating': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+        

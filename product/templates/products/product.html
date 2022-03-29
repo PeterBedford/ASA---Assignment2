@@ -47,6 +47,7 @@
                                     {{ review.date_posted }}
                                     {% if user.is_authenticated %}
                                         <li>
+                                            <a class="btn btn-light " href="{% url 'detail_review' review.pk %}"> View More Detail?</a>
                                             <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
                                             <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
                                         </li>

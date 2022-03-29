@@ -40,3 +40,19 @@ class Profileform(forms.ModelForm):
         self.fields['City'].widget.attrs['class'] = 'form-control'
         self.fields['Country'].widget.attrs['class'] = 'form-control'
         self.fields['Photo'].widget.attrs['class'] = 'form-control'
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta: 
+        model = Profile
+        fields = ('first_name', 'last_name', 'address', 'City', 'Country', 'Photo' )
+
+    def __init__(self, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['address'].widget.attrs['class'] = 'form-control'
+        self.fields['City'].widget.attrs['class'] = 'form-control'
+        self.fields['Country'].widget.attrs['class'] = 'form-control'
+        self.fields['Photo'].widget.attrs['class'] = 'form-control'
