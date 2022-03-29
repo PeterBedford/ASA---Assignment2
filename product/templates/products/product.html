@@ -7,9 +7,9 @@
 <section class="bg-light py-5 mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto">
+            <div class="col mx-auto">
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-info text-white">
                         <h4>
                             <i class="fa-solid fa-circle-info"></i> Product
                         </h4>
@@ -22,6 +22,32 @@
                             <li>{{ product.date_released }}</li>
                             <li>{{ product.description }}</li>
                             <li>{{ product.photo }}</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col mx-auto">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h4>
+                            <i class="fa-solid fa-comment"></i> Reviews
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                            {% if not product.Reviews.all %}
+                                <p>No Reviews Yet...</p><a href="#">
+                                    Add a review?
+                                </a>
+                            {% else %}
+                                {% for review in product.Reviews.all %}
+                                    {{ review.Author }}
+                                    {{ review.rating }}
+                                    {{ review.description }}
+                                    {{ review.date_posted }}
+                                {% endfor %}
+                            {% endif %}
+                                
                     </div>
                 </div>
             </div>

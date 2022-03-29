@@ -1,7 +1,7 @@
 import re
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from product.views import ProductView
 
 def index(request):
     return render(request, 'pages/index.html')

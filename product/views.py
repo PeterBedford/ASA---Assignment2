@@ -9,3 +9,9 @@ class ProductView(DetailView):
     model = Product
     template_name = 'products/product.html'
 
+    
+        
+
+
+
+
