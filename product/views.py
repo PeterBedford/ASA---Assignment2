@@ -8,11 +8,14 @@ from django.views.generic import DetailView, CreateView, DeleteView, UpdateView
 from product.forms import CreateReviewForm, UpdateReviewForm
 from product.models import Product, Review
 from django.template.response import TemplateResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 class ProductView(DetailView):
     model = Product
     template_name = 'products/product.html'
 
+@method_decorator(login_required, name='dispatch')
 class AddReviewView(CreateView):
     model = Review
     form_class = CreateReviewForm
@@ -35,7 +38,7 @@ class AddReviewView(CreateView):
     
     
     
-    
+@method_decorator(login_required, name='dispatch')
 class ReviewDelete(DeleteView):
     model = Review
     #no custom form needed
@@ -45,6 +48,9 @@ class ReviewDelete(DeleteView):
         return reverse_lazy('index') # change at some point
 
 
+
+
+@method_decorator(login_required, name='dispatch')
 class ReviewUpdate(UpdateView):
     model = Review
     form_class = UpdateReviewForm

@@ -45,10 +45,14 @@
                                     {{ review.rating }}
                                     {{ review.description }}
                                     {{ review.date_posted }}
-                                    <li>
-                                        <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
-                                        <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
-                                    </li>
+                                    {% if user.is_authenticated %}
+                                        <li>
+                                            <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
+                                            <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
+                                        </li>
+                                    {% else %}
+                                        <li>please login to add a review</li>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                                 
