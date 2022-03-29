@@ -17,8 +17,21 @@
                     <div class="card-body">
                         <form action="" method="POST">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-secondary"> Login</button>
+
+                            <form>
+                                <div class="mb-3">
+                                  <label for="username" class="form-label">Username</label>
+                                  <input type="text" class="form-control" id="" aria-describedby="" name="username" placeholder="Username...">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="" class="form-label">Password</label>
+                                  <input type="password" class="form-control" id="" name="password" placeholder="Password...">
+                                </div>
+                                
+                                <button type="" class="btn btn-secondary">Login</button>
+                              </form>
+
+                           
                         </form>
                     </div>
                 </div>
