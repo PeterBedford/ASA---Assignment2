@@ -21,7 +21,7 @@
                             <li>{{ product.category }}</li>
                             <li>{{ product.date_released }}</li>
                             <li>{{ product.description }}</li>
-                            <li>{{ product.photo }}</li>
+                            <img src="{{ product.photo.url }}" alt="">
                     </div>
                 </div>
             </div>
@@ -44,6 +44,8 @@
                                     {{ review.Author }}
                                     {{ review.rating }}
                                     {{ review.description }}
+                                    
+                                    <img src="{{ review.Author.photo.url }}" alt="">
                                     {{ review.date_posted }}
                                     {% if user.is_authenticated %}
                                         <li>

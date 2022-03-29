@@ -9,7 +9,7 @@ from users.models import Profile
 from .forms import EditProfileForm, Registerform
 from django.contrib import messages
 
-@method_decorator(login_required, name='dispatch')
+
 class UserRegisterView(generic.CreateView):
     form_class = Registerform
     template_name = 'registration/register.html'
@@ -29,3 +29,4 @@ def profile(request):
     return render(request, 'profile.html')
 
 
+#assignment2password

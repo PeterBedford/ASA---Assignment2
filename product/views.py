@@ -2,6 +2,7 @@ from itertools import product
 from pyexpat import model
 from re import template
 from statistics import mode
+from django import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, DeleteView, UpdateView
@@ -11,10 +12,21 @@ from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from users.models import Profile
+from django.utils.safestring import mark_safe
+
+
+
+
 
 class ProductView(DetailView):
     model = Product
     template_name = 'products/product.html'
+    fields = ['name', 'brand', 'average_cost', 'category', 'date_released', 'description', 'photo']
+
+
+
+
+
 
 @method_decorator(login_required, name='dispatch')
 class AddReviewView(CreateView):

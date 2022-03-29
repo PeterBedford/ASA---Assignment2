@@ -1,3 +1,4 @@
+from cProfile import Profile
 from datetime import datetime
 from tkinter import CASCADE
 from turtle import mode
