@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                             {% if not product.Reviews.all %}
-                                <p>No Reviews Yet...</p><a href="#">
+                                <p>No Reviews Yet...</p><a href="{% url 'add_review' product.pk %}">
                                     Add a review?
                                 </a>
                             {% else %}
@@ -45,6 +45,10 @@
                                     {{ review.rating }}
                                     {{ review.description }}
                                     {{ review.date_posted }}
+                                    <li>
+                                        <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
+                                        <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
+                                    </li>
                                 {% endfor %}
                             {% endif %}
                                 
