@@ -7,6 +7,8 @@ from users.models import Profile
 from string import Template
 from django.utils.safestring import mark_safe
 from django.forms import ImageField
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 
 class Registerform(UserCreationForm):
     email = forms.EmailField()
@@ -71,13 +73,14 @@ class ViewProfileForm(forms.ModelForm):
 
 
 
-    '''def __init__(self, *args, **kwargs):
-        super(ViewProfileForm, self).__init__(*args, **kwargs)
 
-        self.fields['first_name'].widget.attrs['class': 'form-control', 'readonly': 'readonly']
-        self.fields['last_name'].widget.attrs[]
-        self.fields['address'].widget.attrs['class'] = 'form-control'
-        self.fields['City'].widget.attrs['class'] = 'form-control'
-        self.fields['Country'].widget.attrs['class'] = 'form-control'
-        
-        #self.fields['Photo'].widget.attrs['class'] = 'form-control'''
+class PasswordChangeFormCustom(PasswordChangeForm):
+    class Meta: 
+        model = User
+        fields = ('old_password', 'new_password1', 'new_password2')
+        widgets = {
+            'old_password': forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}),
+            'new_password1': forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}),
+            'new_password2': forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}), 
+        }
+
