@@ -2,6 +2,7 @@ from itertools import product
 from pyexpat import model
 from re import template
 from statistics import mode
+from urllib import request
 from django import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -13,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from users.models import Profile
 from django.utils.safestring import mark_safe
+from django.contrib import messages
+
 
 
 
@@ -34,17 +37,22 @@ class AddReviewView(CreateView):
     form_class = CreateReviewForm
     template_name = 'products/add_review.html'
 
-    '''def add_product_name_header(self):
-        product_id = self.kwargs['pk']
-        product = Product.objects.filter(id=product_id)
-        return TemplateResponse()'''
 
     def form_valid(self, form):
-        #getting current user id and assigning to Author
-        form.instance.Author = self.request.user
-        #getting product id from url and assigning to product in review model.
-        form.instance.Product_id = self.kwargs['pk'] 
-        return super().form_valid(form)
+
+
+        user_reviews = Review.objects.filter(Author = self.request.user)
+
+        if user_reviews:
+            url_back = reverse_lazy('product', kwargs={'pk': self.kwargs['pk']})
+            #messagev = messages.error(request, 'You have already posted a review for this product')
+            return redirect(url_back)
+        else:
+            #getting current user id and assigning to Author
+            form.instance.Author = self.request.user
+            #getting product id from url and assigning to product in review model.
+            form.instance.Product_id = self.kwargs['pk'] 
+            return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('product', kwargs={'pk': self.kwargs['pk']})
@@ -78,6 +86,8 @@ class ReviewUpdate(UpdateView):
 class ReviewDetail(DetailView):
     model = Review
     template_name = 'products/detail_review.html'
+
+
 
     
 

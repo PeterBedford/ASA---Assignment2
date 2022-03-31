@@ -21,7 +21,7 @@
                             <li>{{ product.category }}</li>
                             <li>{{ product.date_released }}</li>
                             <li>{{ product.description }}</li>
-                            <img src="{{ product.photo.url }}" alt="">
+                            <img src="{{ product.photo }}" alt="">
                     </div>
                 </div>
             </div>
@@ -34,30 +34,38 @@
                             <i class="fa-solid fa-comment"></i> Reviews
                         </h4>
                     </div>
+
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
                     <div class="card-body">
-                            {% if not product.Reviews.all %}
-                                <p>No Reviews Yet...</p><a href="{% url 'add_review' product.pk %}">
+                            
+                                <a href="{% url 'add_review' product.pk %}">
                                     Add a review?
                                 </a>
-                            {% else %}
+                            
                                 {% for review in product.Reviews.all %}
                                     {{ review.Author }}
                                     {{ review.rating }}
                                     {{ review.description }}
-                                    
-                                    <img src="{{ review.Author.photo.url }}" alt="">
                                     {{ review.date_posted }}
-                                    {% if user.is_authenticated %}
-                                        <li>
-                                            <a class="btn btn-light " href="{% url 'detail_review' review.pk %}"> View More Detail?</a>
-                                            <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
-                                            <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
-                                        </li>
-                                    {% else %}
-                                        <li>please login to add a review</li>
-                                    {% endif %}
+                                    
+                                   {% if user.is_authenticated %}
+                                        {%if user.id == review.Author.id %}
+                                            <li>
+                                                <a class="btn btn-light " href="{% url 'detail_review' review.pk %}"> View More Detail?</a>
+                                                <a class="btn btn-light " href="{% url 'edit_review' review.pk %}"> Edit?</a>
+                                                <a class="btn btn-light " href="{% url 'deletereview' review.pk %}"> Delete?</a>
+                                            </li>
+                                        {% endif %}      
+                                        {% endif %}
                                 {% endfor %}
-                            {% endif %}
+                            
                                 
                     </div>
                 </div>
