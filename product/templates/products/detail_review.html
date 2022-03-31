@@ -15,12 +15,14 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                            <li>{{ review.Author }}</li>
-                            <li>{{ review.Product }}</li>
-                            <li>{{ review.rating }}</li>
-                            <li>{{ review.description }}</li>
-                            <li>{{ review.date_posted }}</li>
-                            
+                        <h5 class="card-title text-center">{{ product.name }}</h5>
+                        <ul style="list-style: none;">
+                            <li><b>Author:  </b>{{ review.Author }}</li>
+                            <li><b>Producy:  </b>{{ review.Product }}</li>
+                            <li><b>Rating:  </b>{{ review.rating }}</li>
+                            <li><b>Description:  </b>{{ review.description }}</li>
+                            <li><b>Date Posted:  </b>{{ review.date_posted }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>

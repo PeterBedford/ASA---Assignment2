@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header bg-info text-white">
                         <h4>
-                            <i class="fas fa-sign-in-alt"></i> Edit Profile
+                            <i class="fa-solid fa-eye"></i> Profile Details
                         </h4>
                     </div>
                     <div class="card-body">
@@ -17,7 +17,6 @@
                             {% csrf_token %}
                             {{ form.media }}
                             {{ form.as_p }}
-                            <button class="btn btn-secondary"> Update</button>
                             <a class="btn btn-secondary " href="{% url 'index' %}"> Go Back?</a>
                         </form>
                     </div>

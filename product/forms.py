@@ -19,9 +19,8 @@ class CreateReviewForm(forms.ModelForm):
 class UpdateReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ('Product', 'rating', 'description')
+        fields = ('rating', 'description')
         widgets = {
-            
             'rating': forms.Select(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }

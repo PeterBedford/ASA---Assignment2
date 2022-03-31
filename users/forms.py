@@ -28,22 +28,6 @@ class Registerform(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 
-class Profileform(forms.ModelForm):
-   
-
-    class Meta: 
-        model = Profile
-        fields = ('first_name', 'last_name', 'address', 'City', 'Country', 'Photo' )
-
-    def __init__(self, *args, **kwargs):
-        super(Profileform, self).__init__(*args, **kwargs)
-
-        self.fields['first_name'].widget.attrs['class'] = 'form-control'
-        self.fields['last_name'].widget.attrs['class'] = 'form-control'
-        self.fields['address'].widget.attrs['class'] = 'form-control'
-        self.fields['City'].widget.attrs['class'] = 'form-control'
-        self.fields['Country'].widget.attrs['class'] = 'form-control'
-        self.fields['Photo'].widget.attrs['class'] = 'form-control'
 
 
 
@@ -67,3 +51,33 @@ class EditProfileForm(forms.ModelForm):
         self.fields['Country'].widget.attrs['class'] = 'form-control'
         
         #self.fields['Photo'].widget.attrs['class'] = 'form-control'
+
+
+
+
+
+class ViewProfileForm(forms.ModelForm):
+    class Meta: 
+        model = Profile
+        fields = ('first_name', 'last_name', 'address', 'City', 'Country', 'Photo' )
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+            'address': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+            'City': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+            'Country': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+            'Photo': forms.TextInput(attrs={'class': 'form-control bg-white', 'disabled': 'disabled'}),
+        }
+
+
+
+    '''def __init__(self, *args, **kwargs):
+        super(ViewProfileForm, self).__init__(*args, **kwargs)
+
+        self.fields['first_name'].widget.attrs['class': 'form-control', 'readonly': 'readonly']
+        self.fields['last_name'].widget.attrs[]
+        self.fields['address'].widget.attrs['class'] = 'form-control'
+        self.fields['City'].widget.attrs['class'] = 'form-control'
+        self.fields['Country'].widget.attrs['class'] = 'form-control'
+        
+        #self.fields['Photo'].widget.attrs['class'] = 'form-control'''
