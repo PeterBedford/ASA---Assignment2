@@ -31,7 +31,7 @@ class ProductView(DetailView):
 
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/users/login'), name='dispatch')
 class AddReviewView(CreateView):
     model = Review
     form_class = CreateReviewForm
@@ -59,7 +59,7 @@ class AddReviewView(CreateView):
     
     
     
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/users/login'), name='dispatch')
 class ReviewDelete(DeleteView):
     model = Review
     #no custom form needed
@@ -71,7 +71,7 @@ class ReviewDelete(DeleteView):
 
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/users/login'), name='dispatch')
 class ReviewUpdate(UpdateView):
     model = Review
     form_class = UpdateReviewForm
@@ -82,7 +82,7 @@ class ReviewUpdate(UpdateView):
 
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/users/login'), name='dispatch')
 class ReviewDetail(DetailView):
     model = Review
     template_name = 'products/detail_review.html'
