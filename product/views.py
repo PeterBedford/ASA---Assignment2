@@ -26,6 +26,9 @@ class ProductView(DetailView):
     template_name = 'products/product.html'
     fields = ['name', 'brand', 'average_cost', 'category', 'date_released', 'description', 'photo']
 
+    def get_product_id(self, **kwargs):
+       product_id = self.kwargs['pk']
+       return product_id
 
 
 
@@ -64,10 +67,18 @@ class ReviewDelete(DeleteView):
     model = Review
     #no custom form needed
     template_name = 'products/delete_review.html'
+
+    #product.id = Review.objects.get(Product.id)
     
     def get_success_url(self):
-        return reverse_lazy('index') # change at some point
+        #return reverse_lazy('index') # change at some point
+        #eview_id = self.kwargs['pk']
+        #q = Review.objects.raw('''SELECT Product_id FROM product_review WHERE id = %s''', [review_id])
+        #product_id = Review.objects.get(Product.id)
+        #for i in product_id:
+        #    i.id
 
+        return redirect('index')
 
 
 

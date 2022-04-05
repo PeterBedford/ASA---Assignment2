@@ -20,7 +20,8 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <button class="btn btn-secondary"> Add</button>
+                            <button class="btn btn-success"> Add</button>
+                            <a class="btn btn-secondary " href="{{request.META.HTTP_REFERER|escape}}"> Go Back?</a>
                         </form>
                     </div>
                 </div>
