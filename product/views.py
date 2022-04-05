@@ -26,9 +26,7 @@ class ProductView(DetailView):
     template_name = 'products/product.html'
     fields = ['name', 'brand', 'average_cost', 'category', 'date_released', 'description', 'photo']
 
-    def get_product_id(self, **kwargs):
-       product_id = self.kwargs['pk']
-       return product_id
+    
 
 
 
@@ -77,8 +75,8 @@ class ReviewDelete(DeleteView):
         #product_id = Review.objects.get(Product.id)
         #for i in product_id:
         #    i.id
-
-        return redirect('index')
+       
+        return reverse_lazy('index')
 
 
 

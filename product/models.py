@@ -7,9 +7,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Manufacturer(models.Model):
+    name = models.CharField(max_length=30 )
+    industry = models.CharField(max_length=30)
+
+    
+
+
 class Product(models.Model):   
     name = models.CharField(max_length=30)
-    brand = models.CharField(max_length=50)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, null=True)
     average_cost = models.DecimalField(max_digits=6, decimal_places=2)
     category = models.CharField(max_length=50)
     date_released = models.DateField(auto_now=True)
@@ -17,7 +24,7 @@ class Product(models.Model):
     photo = models.ImageField(upload_to='product_pics')
 
     def __str__(self):
-        return self.name + ' | ' + self.brand + ' | ' + self.category
+        return self.name + ' | ' + self.manufacturer + ' | ' + self.category
 
 
 class Review(models.Model):
@@ -37,4 +44,5 @@ class Review(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.Product.name, self.Author)
+
 
