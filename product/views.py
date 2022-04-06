@@ -15,11 +15,7 @@ from django.utils.decorators import method_decorator
 from users.models import Profile
 from django.utils.safestring import mark_safe
 from django.contrib import messages
-
-
-
-
-
+from django.core.paginator import Paginator
 
 class ProductView(DetailView):
     model = Product
@@ -30,9 +26,13 @@ class ProductView(DetailView):
 def allProducts(request):
 
     products = Product.objects.all()
+    
+    paginator = Paginator(products, 1)
+    page = request.GET.get('page')
+    paged_products = paginator.get_page(page)
 
     context = {
-        'products': products
+        'products': paged_products
     }
 
     return render(request, 'products/all_products.html', context)
