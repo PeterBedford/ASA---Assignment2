@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<section class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            {% if products %}
+                {% for product in products %}
+                    <div class="col mx-auto"> 
+                            <div class="card">
+                                <div class="card-header bg-info text-white">
+                                    <h4>
+                                        <i class="fa-solid fa-circle-info"></i> Product
+                                    </h4>
+                                </div>
+                                <div class="card-body">             
+                                    <h5 class="card-title text-center">{{ product.name }}</h5>
+                                    <ul style="list-style: none;">
+                                        <li><b>Manufactor:  </b>{{ product.manufacturer }}</li>
+                                        <li><b>Price:  </b>{{ product.average_cost }}</li>
+                                        <li><b>Category:  </b>{{ product.category }}</li>
+                                        <li><b>Date Released:  </b>{{ product.date_released }}</li>
+                                        <li><b>Description:  </b>{{ product.description }}</li>
+                                        <li><b>Image:  </b><img src="{{ product.photo }}" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-md-12">
+                    <p>No Products Available</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

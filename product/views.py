@@ -26,9 +26,16 @@ class ProductView(DetailView):
     template_name = 'products/product.html'
     fields = ['name', 'brand', 'average_cost', 'category', 'date_released', 'description', 'photo']
 
-    
 
+def allProducts(request):
 
+    products = Product.objects.all()
+
+    context = {
+        'products': products
+    }
+
+    return render(request, 'products/all_products.html', context)
 
 
 

@@ -34,6 +34,7 @@
             Products
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="{% url 'products'%}">All Products</a></li>
               {% for product in products %}
                 <li><a class="dropdown-item" href="{% url 'product' product.id %}">{{ product.name }}</a></li>
               {% endfor %}
