@@ -49,13 +49,13 @@ class AddReviewView(CreateView):
     def form_valid(self, form):
 
         #check
-        user_reviews = Review.objects.filter(Author = self.request.user).exists()
+        '''user_reviews = Review.objects.filter(Author = self.request.user).exists()
 
         if user_reviews == False:
             url_back = reverse_lazy('product', kwargs={'pk': self.kwargs['pk']})
             #messagev = messages.error(request, 'You have already posted a review for this product')
             return redirect(url_back)
-        else:
+        else:'''
             #getting current user id and assigning to Author
             form.instance.Author = self.request.user
             #getting product id from url and assigning to product in review model.
