@@ -10,7 +10,8 @@ from django.contrib.auth.models import User
 class Manufacturer(models.Model):
     name = models.CharField(max_length=30 )
     industry = models.CharField(max_length=30)
-
+    def __str__(self):
+        return self.name + ' | ' + self.industry
     
 
 
@@ -24,7 +25,7 @@ class Product(models.Model):
     photo = models.ImageField(upload_to='product_pics')
 
     def __str__(self):
-        return self.name + ' | ' + self.manufacturer + ' | ' + self.category
+        return self.name + ' | ' + self.category
 
 
 class Review(models.Model):
